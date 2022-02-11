@@ -1,0 +1,24 @@
+{% extends 'app_blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+{% for post in posts %}
+
+
+<main role="main" class="inner cover">
+  <div class="container">
+    <div class="col-md-12">
+      <h1>{{post.title}}</h1>
+      <p>{{post.intro}}</p>
+      <div>
+	<span class="badge">Posted at {{ post.date_added }}</span>
+	
+	<p><a class="btn btn-secondary" href="{% url 'post_detail' post.slug %}" role="button">View details &raquo;</a></p>
+      </div>
+      <hr>
+    </div>
+  </div>
+</main>
+{% endfor %}
+{% endblock %}
