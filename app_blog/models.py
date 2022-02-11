@@ -9,6 +9,7 @@ class Post(models.Model):
     intro = models.TextField()
     body = models.TextField()
     date_added = models.DateField(auto_now=False)
+    thumb = models.ImageField(default='default.png', blank=True)
 
     class Meta:
         ordering = ['-date_added']

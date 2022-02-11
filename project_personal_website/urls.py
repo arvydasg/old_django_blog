@@ -17,10 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from app_blog.views import frontpage, post_detail, blog
 
+# to use and store images
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('', frontpage, name='frontpage'),
+    path('admin/', admin.site.urls),
     path('blog/', blog, name='blog'),
     path('<slug:slug>/', post_detail, name='post_detail'),
-    path('admin/', admin.site.urls),
-    
 ]
+
+
+# where are the files stored?
+# django will set up a url pattern for us, so it can serve those media files for us when we tap them in browser url bar. OR request from template
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
